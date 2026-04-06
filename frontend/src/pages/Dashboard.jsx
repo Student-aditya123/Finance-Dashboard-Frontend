@@ -1,4 +1,4 @@
-import SummaryCard from "../components/dashboard/SummaryCard"
+import SummaryCard from "../components/dashboard/Summarycard"
 import BalanceChart from "../components/dashboard/BalanceChart"
 import ExpensePieChart from "../components/dashboard/ExpensePieChart"
 
