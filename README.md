@@ -6,7 +6,7 @@ This project focuses on **data-driven insights, clean typography, and a FAANG-le
 ---
 
 ## 🚀 Live Demo
-👉 https://your-vercel-link.vercel.app
+👉 https://finance-dashboard-frontend-cyan.vercel.app
 
 ---
 
