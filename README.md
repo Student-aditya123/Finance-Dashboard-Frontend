@@ -1,169 +1,181 @@
-📊 Personal Finance Intelligence Dashboard
-A high-performance, responsive finance management interface built with a "Soft UI" aesthetic. This project focuses on data-driven insights, clean typography, and a "FAANG-level" user experience for tracking personal wealth and spending habits.
+# 📊 Personal Finance Intelligence Dashboard
 
-🚀 Live Demo
-[Insert Your Vercel Link Here]
+A high-performance, responsive finance management interface built with a **Soft UI aesthetic**.  
+This project focuses on **data-driven insights, clean typography, and a FAANG-level user experience** for tracking personal wealth and spending habits.
 
-🛠️ Tech Stack
-Frontend: React.js (Vite/CRA)
+---
 
-Styling: Tailwind CSS (Custom Soft UI configuration)
+## 🚀 Live Demo
+👉 https://your-vercel-link.vercel.app
 
-Animations: Framer Motion (for smooth micro-interactions)
+---
 
-Icons: Lucide React
+## 🛠️ Tech Stack
 
-Data Visualization: Recharts / Chart.js (Balance trends & Expense breakdowns)
+**Frontend:** React.js (Vite)  
+**Styling:** Tailwind CSS (Custom Soft UI configuration)  
+**Animations:** Framer Motion  
+**Icons:** Lucide React  
+**Data Visualization:** Recharts  
 
-✨ Key Features
-Intelligent Insights Engine: Uses React useMemo for optimized calculation of spending trends and monthly comparisons.
+---
 
-Soft UI Dashboard: A clean, modern interface featuring custom shadow depth and high-radius borders for a premium feel.
+## ✨ Key Features
 
-Transaction Audit: Detailed view of "Critical Expenses" and high-impact spending categories.
+### 🧠 Intelligent Insights Engine
+- Optimized calculations using `useMemo`
+- Monthly comparisons and spending trends
+- AI-style financial observations
 
-CSV Data Export: Built-in utility to export financial records for external analysis.
+### 🎨 Soft UI Dashboard
+- Modern, clean interface
+- Smooth shadows and rounded UI
+- Premium look & feel
 
-Responsive Analytics: Dynamic charts that adjust to provide a seamless experience across desktop and mobile devices.
+### 📊 Advanced Analytics
+- Balance trend charts
+- Category-wise expense breakdown
+- Monthly financial summaries
 
-📂 Folder Structure
-The project follows a modular architecture to ensure scalability and maintainability:
+### 💸 Transaction Management
+- Add, edit, delete transactions
+- Filter, sort, and search
+- Form validation
 
- finance-dashboard/
+### 📁 CSV Export
+- Export filtered financial data
+- Useful for external analysis
+
+### 📱 Fully Responsive
+- Works seamlessly on mobile & desktop
+- Adaptive layouts and charts
+
+---
+
+## 🧩 Features Breakdown
+
+### 📌 Dashboard
+- Summary Cards: Balance, Income, Expenses
+- Monthly comparison (MoM % change)
+- Line Chart: Income vs Expenses vs Balance
+- Donut Chart: Category breakdown
+- Recent transactions preview
+
+---
+
+### 📌 Transactions
+- Search by description/category
+- Filter by type (income/expense)
+- Sortable table
+- CRUD operations (Admin only)
+
+---
+
+### 🔐 Role-Based UI
+- **Admin:** Full access (Add/Edit/Delete)
+- **Viewer:** Read-only mode
+- Role switching from sidebar
+
+---
+
+### 📈 Insights
+- Top spending category
+- Savings rate calculation
+- Monthly comparisons
+- Category-wise breakdown
+- Smart financial tips
+
+---
+
+### 🎯 UX Enhancements
+- Dark / Light mode (saved in localStorage)
+- Loading skeleton screens
+- Empty state UI
+- Smooth animations (Framer Motion)
+- Toast notifications
+- CSV export support
+
+---
+
+## 📂 Folder Structure
+
+
+finance-dashboard/
 │
 ├── .gitignore
 ├── README.md
 │
 ├── frontend/
-│   ├── index.html
-│   ├── package.json
-│   ├── package-lock.json
-│   ├── vite.config.js
-│   ├── tailwind.config.js
+│ ├── index.html
+│ ├── package.json
+│ ├── vite.config.js
+│ ├── tailwind.config.js
 │
-│   ├── node_modules/
+│ └── src/
+│ ├── App.jsx
+│ ├── main.jsx
+│ ├── index.css
 │
-│   └── src/
-│       ├── App.jsx
-│       ├── main.jsx
-│       ├── index.css
+│ ├── components/
+│ │ ├── dashboard/
+│ │ │ ├── BalanceChart.jsx
+│ │ │ ├── ExpensePie.jsx
+│ │ │ └── SummaryCard.jsx
+│ │ │
+│ │ ├── insights/
+│ │ │ └── InsightsPanel.jsx
+│ │ │
+│ │ ├── layout/
+│ │ │ ├── Layout.jsx
+│ │ │ ├── Navbar.jsx
+│ │ │ └── Sidebar.jsx
+│ │ │
+│ │ ├── transactions/
+│ │ │ ├── FilterBar.jsx
+│ │ │ ├── TransactionForm.jsx
+│ │ │ └── TransactionTable.jsx
+│ │ │
+│ │ └── ui/
+│ │ ├── Button.jsx
+│ │ ├── Card.jsx
+│ │ ├── Input.jsx
+│ │ ├── Loader.jsx
+│ │ └── EmptyState.jsx
 │
-│       ├── components/
-│       │   ├── dashboard/
-│       │   │   ├── BalanceChart.jsx
-│       │   │   ├── ExpensePie.jsx
-│       │   │   └── SummaryCard.jsx
-│       │   │
-│       │   ├── insights/
-│       │   │   └── InsightsPanel.jsx
-│       │   │
-│       │   ├── layout/
-│       │   │   ├── Layout.jsx
-│       │   │   ├── Navbar.jsx
-│       │   │   └── Sidebar.jsx
-│       │   │
-│       │   ├── transactions/
-│       │   │   ├── FilterBar.jsx
-│       │   │   ├── TransactionForm.jsx
-│       │   │   └── TransactionTable.jsx
-│       │   │
-│       │   └── ui/
-│       │       ├── Button.jsx
-│       │       ├── Card.jsx
-│       │       ├── EmptyState.jsx
-│       │       ├── Input.jsx
-│       │       └── Loader.jsx
+│ ├── data/
+│ │ └── transactions.js
 │
-│       ├── data/
-│       │   └── transactions.js
+│ ├── hooks/
+│ │ ├── useTheme.js
+│ │ └── useTransaction.js
 │
-│       ├── hooks/
-│       │   └── usetheme.js
-|       |   |__useTransaction.js
+│ ├── pages/
+│ │ ├── Dashboard.jsx
+│ │ ├── Transactions.jsx
+│ │ └── Insights.jsx
 │
-│       ├── pages/
-│       │   ├── Dashboard.jsx
-│       │   └── Transactions.jsx
-|       |   |__Insights.jsx
-│           
-│       ├── store/
-│       │   └── useStore.js
+│ ├── store/
+│ │ └── useStore.js
 │
-│       └── utils/
-│           └── contants.js
-            |__exportToCSV.js
-            |__formatCurrency.js
-            |__formatdate.js 
-<!-- Plaintext
-FINANCE-DASHBOARD/
-├── frontend/               # React Application Root
-│   ├── public/             # Static assets
-│   ├── src/
-│   │   ├── components/     # UI Components (InsightsSection, Charts, etc.)
-│   │   ├── data/           # Mock data & transactions.js
-│   │   ├── utils/          # Helper functions (exportToCSV.js)
-│   │   ├── App.js          # Main Application Logic
-│   │   └── main.jsx        # Entry Point
-│   ├── package.json        # Dependencies & Scripts
-│   └── tailwind.config.js  # Custom theme & Soft UI settings
-├── .gitignore              # Git exclusion rules
-└── README.md               # Project documentation -->
-⚙️ Local Setup Instructions
-To run this project locally, follow these steps:
+│ └── utils/
+│ ├── constants.js
+│ ├── exportToCSV.js
+│ ├── formatCurrency.js
+│ └── formatDate.js
 
-Clone the Repository:
-
-Bash
-git clone https://github.com/[your-username]/finance-dashboard.git
-cd finance-dashboard
-Navigate to Frontend:
-
-Bash
-cd frontend
-Install Dependencies:
-
-Bash
-npm install
-Start Development Server:
-
-Bash
-npm run dev  # or npm start
-
-## Features
-
-### Dashboard Overview
-- Summary cards: Total Balance, Income, Expenses with MoM % change
-- Line chart: 6-month income vs expenses vs balance trend
-- Donut chart: Spending by category with visual breakdown
-- Recent transactions table
-
-### Transactions
-- Sortable table (date, description, amount)
-- Search by description or category
-- Filter by type (income / expense) and category
-- Admin: Add, Edit, Delete transactions with form validation
-
-### Role-Based UI
-- **Admin**: Full CRUD — add, edit, delete transactions
-- **Viewer**: Read-only access, all action buttons hidden
-- Switch roles via the sidebar badge (frontend only)
-
-### Insights
-- Top spending category with percentage
-- Month-over-month expense and income change
-- Savings rate calculation
-- Full category spending breakdown
-- Monthly summary table with savings rate bars
-- AI-generated tips based on real data
-
-### UX
-- Dark / Light mode toggle, persisted to localStorage
-- Loading skeleton screens on initial render
-- Empty state handling (no results found)
-- Smooth fade-in and slide-up animations
-- Fully responsive (mobile sidebar hidden, adaptive grids)
-- Toast notifications for all CRUD actions
-- CSV export of filtered transactions
 
 ---
+
+## ⚙️ Local Setup Instructions
+
+### 1️⃣ Clone the repository
+```bash
+git clone https://github.com/your-username/finance-dashboard.git
+cd finance-dashboard
+2️⃣ Navigate to frontend
+cd frontend
+3️⃣ Install dependencies
+npm install
+4️⃣ Run development server
+npm run dev
 
