@@ -19,7 +19,23 @@ This project focuses on **data-driven insights, clean typography, and a FAANG-le
 **Data Visualization:** Recharts  
 
 ---
+## ⚡ Performance Optimization
 
+This project is optimized for real-world performance and scalability:
+
+- 🚀 **Code Splitting** using React.lazy()
+- ⏳ **Lazy Loading** for pages and heavy components (charts)
+- 🎯 **Suspense Fallback UI** with custom Loader
+- 📦 **Optimized Bundle Size** with Vite build system
+- 🧠 **Memoization** using useMemo for computed insights
+- ⚙️ **Manual Chunk Splitting** for better caching and load time
+
+Result:
+- Faster initial load ⚡
+- Improved user experience 🎯
+- Production-ready architecture 
+
+---
 ## ✨ Key Features
 
 ### 🧠 Intelligent Insights Engine
@@ -96,73 +112,6 @@ This project focuses on **data-driven insights, clean typography, and a FAANG-le
 - CSV export support
 
 ---
-
-## 📂 Folder Structure
-
-
-finance-dashboard/
-│
-├── .gitignore
-├── README.md
-│
-├── frontend/
-│ ├── index.html
-│ ├── package.json
-│ ├── vite.config.js
-│ ├── tailwind.config.js
-│
-│ └── src/
-│ ├── App.jsx
-│ ├── main.jsx
-│ ├── index.css
-│
-│ ├── components/
-│ │ ├── dashboard/
-│ │ │ ├── BalanceChart.jsx
-│ │ │ ├── ExpensePie.jsx
-│ │ │ └── SummaryCard.jsx
-│ │ │
-│ │ ├── insights/
-│ │ │ └── InsightsPanel.jsx
-│ │ │
-│ │ ├── layout/
-│ │ │ ├── Layout.jsx
-│ │ │ ├── Navbar.jsx
-│ │ │ └── Sidebar.jsx
-│ │ │
-│ │ ├── transactions/
-│ │ │ ├── FilterBar.jsx
-│ │ │ ├── TransactionForm.jsx
-│ │ │ └── TransactionTable.jsx
-│ │ │
-│ │ └── ui/
-│ │ ├── Button.jsx
-│ │ ├── Card.jsx
-│ │ ├── Input.jsx
-│ │ ├── Loader.jsx
-│ │ └── EmptyState.jsx
-│
-│ ├── data/
-│ │ └── transactions.js
-│
-│ ├── hooks/
-│ │ ├── useTheme.js
-│ │ └── useTransaction.js
-│
-│ ├── pages/
-│ │ ├── Dashboard.jsx
-│ │ ├── Transactions.jsx
-│ │ └── Insights.jsx
-│
-│ ├── store/
-│ │ └── useStore.js
-│
-│ └── utils/
-│ ├── constants.js
-│ ├── exportToCSV.js
-│ ├── formatCurrency.js
-│ └── formatDate.js
-
 
 ---
 
