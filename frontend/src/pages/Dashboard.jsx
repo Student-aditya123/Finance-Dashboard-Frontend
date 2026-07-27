@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useTransactions } from '@/hooks'
 import { buildMonthlyChartData, buildCategoryData } from '@/utils/formatters'
-import { Card, CardHeader, SkeletonCard } from '@/components/ui'
+import { Card, CardHeader, SkeletonCard } from '@/components/ui/Index'
 import SummaryCard from '@/components/dashboard/SummaryCard'
 import TrendLineChart from '@/components/dashboard/TrendLineChart'
 import SpendingDonutChart from '@/components/dashboard/SpendingDonutChart'
