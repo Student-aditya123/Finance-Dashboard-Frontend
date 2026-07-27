@@ -1,70 +1,79 @@
-import { Wallet, TrendingUp, TrendingDown } from "lucide-react";
+import clsx from 'clsx'
+import { formatCurrency } from '@/utils/formatters'
 
-const cards = [
-  {
-    title: "Total Balance",
-    value: "₹75,340",
-    change: "+2.5%",
-    positive: true,
-    icon: Wallet,
+const VARIANTS = {
+  balance: {
+    label:      'Total Balance',
+    icon:       '◈',
+    textColor:  'text-brand-500',
+    iconBg:     'bg-brand-50 dark:bg-[rgba(94,110,247,0.12)]',
+    iconColor:  'text-brand-500',
+    accentBg:   'before:bg-brand-400',
   },
-  {
-    title: "Income",
-    value: "₹1,20,000",
-    change: "+5.2%",
-    positive: true,
-    icon: TrendingUp,
+  income: {
+    label:      'Total Income',
+    icon:       '↑',
+    textColor:  'text-emerald-500',
+    iconBg:     'bg-emerald-50 dark:bg-emerald-950',
+    iconColor:  'text-emerald-500',
+    accentBg:   'before:bg-emerald-400',
   },
-  {
-    title: "Expenses",
-    value: "₹44,660",
-    change: "-1.8%",
-    positive: false,
-    icon: TrendingDown,
+  expense: {
+    label:      'Total Expenses',
+    icon:       '↓',
+    textColor:  'text-red-500',
+    iconBg:     'bg-red-50 dark:bg-red-950',
+    iconColor:  'text-red-500',
+    accentBg:   'before:bg-red-400',
   },
-];
+}
 
-const SummaryCards = () => {
+export default function SummaryCard({ variant, amount, changePct, loading }) {
+  const v = VARIANTS[variant]
+
+  if (loading) {
+    return (
+      <div className="card p-5 space-y-3">
+        <div className="skeleton h-3 w-24 rounded" />
+        <div className="skeleton h-7 w-40 rounded" />
+        <div className="skeleton h-2.5 w-20 rounded" />
+      </div>
+    )
+  }
+
+  const changePositive = changePct >= 0
+
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {cards.map((card, index) => {
-        const Icon = card.icon;
+    <div className={clsx(
+      'card p-5 relative overflow-hidden',
+      'before:absolute before:top-0 before:right-0 before:w-20 before:h-20',
+      'before:opacity-10 before:rounded-bl-full',
+      v.accentBg,
+    )}>
+      {/* Icon */}
+      <div className={clsx(
+        'absolute top-4 right-4 w-9 h-9 rounded-xl flex items-center justify-center text-lg',
+        v.iconBg, v.iconColor,
+      )}>
+        {v.icon}
+      </div>
 
-        return (
-          <div
-            key={index}
-            className="relative flex flex-col bg-slate-800 p-6 rounded-2xl shadow-sm hover:shadow-md transition min-h-35"
-          >
-            {/* Center Content */}
-            <div className="flex flex-col items-center justify-center flex-1 text-center">
-              <div className="p-3 rounded-xl bg-gray-100 mb-3">
-                <Icon className="w-10 h-10 text-gray-700" />
-              </div>
+      <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 dark:text-slate-500 mb-2">
+        {v.label}
+      </p>
 
-              <h4 className="text-sm font-bold text-blue-700">{card.title}</h4>
+      <p className={clsx('text-[24px] font-bold tracking-tight font-mono mb-1.5', v.textColor)}>
+        {formatCurrency(amount)}
+      </p>
 
-              <p className="text-2xl font-semibold text-gray-100 mt-1">
-                {card.value}
-              </p>
-            </div>
-
-            {/* Bottom-left Change Badge */}
-            <div className="absolute bottom-4 left-4">
-              <span
-                className={`text-xs font-medium px-3 py-1 rounded-full ${
-                  card.positive
-                    ? "bg-green-200 text-green-600"
-                    : "bg-red-100 text-red-600"
-                }`}
-              >
-                {card.change}
-              </span>
-            </div>
-          </div>
-        );
-      })}
+      {changePct !== undefined && (
+        <div className="flex items-center gap-1.5 text-[12px] font-medium">
+          <span className={changePositive ? 'text-emerald-500' : 'text-red-500'}>
+            {changePositive ? '▲' : '▼'} {Math.abs(changePct).toFixed(1)}%
+          </span>
+          <span className="text-slate-400 dark:text-slate-500">vs last month</span>
+        </div>
+      )}
     </div>
-  );
-};
-
-export default SummaryCards;
+  )
+}

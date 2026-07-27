@@ -1,50 +1,49 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-    darkMode: 'class',
-    content: [
-        './index.html',
-        './src/**/*.{js,ts,jsx,tsx}',
-    ],
-    theme: {
-        extend: {
-            fontFamily: {
-                sans: ['Inter', 'system-ui', 'sans-serif'],
-            },
-            colors: {
-                primary: {
-                    50: '#f0f9ff',
-                    100: '#e0f2fe',
-                    500: '#0ea5e9',
-                    600: '#0284c7',
-                    700: '#0369a1',
-                    900: '#082f49',
-                },
-                secondary: {
-                    50: '#f5f3ff',
-                    500: '#a78bfa',
-                    600: '#9333ea',
-                    700: '#7e22ce',
-                },
-                accent: {
-                    50: '#fef3c7',
-                    500: '#f59e0b',
-                    600: '#d97706',
-                },
-            },
-            boxShadow: {
-                'soft-glow': '0 8px 32px rgba(15, 23, 42, 0.12)',
-                'soft-glow-lg': '0 16px 48px rgba(15, 23, 42, 0.15)',
-            },
-            borderRadius: {
-                '2xl': '1rem',
-            },
-            backdropBlur: {
-                xs: '2px',
-            },
-            opacity: {
-                8: '0.08',
-            },
+  content: ['./index.html', './src/**/*.{js,jsx}'],
+  darkMode: 'class',
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['DM Sans', 'system-ui', 'sans-serif'],
+        mono: ['DM Mono', 'monospace'],
+      },
+      colors: {
+        brand: {
+          50:  '#eef0ff',
+          100: '#c7cdff',
+          200: '#a1aaff',
+          400: '#6872f5',
+          500: '#5e6ef7',
+          600: '#4f5cf5',
+          700: '#3d4ae8',
+          900: '#1e2167',
         },
+      },
+      borderRadius: {
+        xl: '1rem',
+        '2xl': '1.25rem',
+      },
+      animation: {
+        'slide-up': 'slideUp 0.2s ease',
+        'fade-in': 'fadeIn 0.3s ease',
+        'shimmer': 'shimmer 1.5s infinite',
+      },
+      keyframes: {
+        slideUp: {
+          from: { transform: 'translateY(8px)', opacity: 0 },
+          to: { transform: 'translateY(0)', opacity: 1 },
+        },
+        fadeIn: {
+          from: { opacity: 0 },
+          to: { opacity: 1 },
+        },
+        shimmer: {
+          '0%': { backgroundPosition: '200% 0' },
+          '100%': { backgroundPosition: '-200% 0' },
+        },
+      },
     },
-    plugins: [],
-};
+  },
+  plugins: [],
+}

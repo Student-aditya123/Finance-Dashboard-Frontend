@@ -1,17 +1,34 @@
-import FilterBar from "../components/transactions/FilterBar"
-import TransactionTable from "../components/transactions/TransactionTable"
-import useTheme from "../hooks/useTheme.js"
+import { Card, CardHeader } from '@/components/ui'
+import FilterBar from '@/components/transactions/FilterBar'
+import TransactionTable from '@/components/transactions/TransactionTable'
+import { useTransactions } from '@/hooks'
 
-function Transaction() {
-  const { dark, setDark } = useTheme()
+export default function Transactions() {
+  const { filteredTransactions } = useTransactions()
 
   return (
-    <div className="p-6 ml-64 space-y-6"> 
-      <FilterBar />
-      <TransactionTable />
+    <div className="flex flex-col gap-5 animate-fade-in">
+      <Card>
+        <CardHeader
+          title={
+            <span className="flex items-center gap-2">
+              All Transactions
+              <span className="
+                text-[10px] font-semibold px-2 py-0.5 rounded-full
+                bg-brand-50 dark:bg-[rgba(94,110,247,0.12)]
+                text-brand-500 dark:text-brand-400
+              ">
+                {filteredTransactions.length}
+              </span>
+            </span>
+          }
+        />
+
+        <FilterBar />
+
+        <TransactionTable />
+      </Card>
     </div>
   )
 }
-
-export default Transaction
 

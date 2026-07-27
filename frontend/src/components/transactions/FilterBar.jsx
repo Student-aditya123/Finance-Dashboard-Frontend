@@ -1,93 +1,79 @@
-import { FiSearch } from "react-icons/fi"
-import { useStore } from "../../store/useStore"
-import {
-  TRANSACTION_CATEGORIES,
-  CATEGORY_META,
-} from "../../utils/contants"
 
-function FilterBar() {
+import clsx from 'clsx'
+import { useTransactions } from '@/hooks'
+import { ALL_CATEGORIES } from '@/utils/seedData'
+
+const TYPE_FILTERS = [
+  { value: 'all',     label: 'All Types' },
+  { value: 'income',  label: 'Income'    },
+  { value: 'expense', label: 'Expenses'  },
+]
+
+export default function FilterBar() {
   const {
-    setFilter,
-    setCategory,
-    setSearch,
-    setSort,
-    setStartDate,
-    setEndDate,
-  } = useStore()
+    search, filterType, filterCat,
+    setSearch, setFilterType, setFilterCat, resetFilters,
+    filteredTransactions,
+  } = useTransactions()
+
+  const hasActiveFilters =
+    search || filterType !== 'all' || filterCat !== 'all'
 
   return (
-    <div className="bg-gray-800 p-4 rounded-2xl shadow flex flex-wrap gap-4 items-center justify-between">
-
-      {/* LEFT */}
-      <div className="flex flex-wrap gap-3 items-center">
-
-        {/* 🔍 Search */}
-        <div className="flex items-center bg-gray-800 px-3 py-2 rounded-2xl border text-white">
-          <FiSearch />
-          <input
-            type="text"
-            placeholder="Search..."
-            onChange={(e) => setSearch(e.target.value)}
-            className="bg-transparent outline-none ml-2 text-sm placeholder-gray-400"
-          />
-        </div>
-
-        {/* ✅ Type Filter (from constants) */}
-        <select
-          onChange={(e) => setFilter(e.target.value)}
-          className="px-3 py-2 bg-gray-800 text-white rounded-2xl border text-sm"
-        >
-          <option value="all">All</option>
-          <option value={TRANSACTION_CATEGORIES.INCOME}>Income</option>
-          <option value={TRANSACTION_CATEGORIES.EXPENSE}>Expense</option>
-        </select>
-
-        {/* ✅ Category Filter (dynamic from constants) */}
-        <select
-          onChange={(e) => setCategory(e.target.value)}
-          className="px-3 py-2 bg-gray-800 text-white rounded-2xl border text-sm"
-        > 
-          <option value="all">All Categories</option>
-
-          {Object.entries(CATEGORY_META).map(([key, cat]) => (
-            <option key={key} value={key}>
-              {cat.label}
-            </option>
-          ))}
-        </select>
-
-        {/* Date Range */}
+    <div className="flex flex-wrap items-center gap-3">
+      {/* Search */}
+      <div className="relative flex-1 min-w-200px max-w-75">
+        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-[14px]">
+          ⌕
+        </span>
         <input
-          type="date"
-          onChange={(e) => setStartDate(e.target.value)}
-          className="px-2 py-2 bg-gray-800 text-white border rounded-lg text-sm"
+          type="text"
+          placeholder="Search transactions…"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="input pl-8 h-9"
         />
-
-        <input
-          type="date"
-          onChange={(e) => setEndDate(e.target.value)}
-          className="px-2 py-2 bg-gray-800 text-white border rounded-lg text-sm"
-        />
-
-        {/* Sort */}
-        <select
-          onChange={(e) => setSort(e.target.value)}
-          className="px-3 py-2 bg-gray-800 text-white rounded-2xl border text-sm"
-        >
-          <option value="newest">Newest</option>
-          <option value="oldest">Oldest</option>
-          <option value="high">Amount High</option>
-          <option value="low">Amount Low</option>
-        </select>
-
       </div>
 
-      {/* RIGHT */}
-      <button className="bg-blue-800 text-white px-5 py-2 rounded-xl hover:bg-blue-700 transition">
-         Add Transaction
-      </button>
+      {/* Type chips */}
+      <div className="flex items-center gap-1.5 flex-wrap">
+        {TYPE_FILTERS.map(({ value, label }) => (
+          <button
+            key={value}
+            onClick={() => setFilterType(value)}
+            className={clsx('chip', filterType === value && 'active')}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+
+      {/* Category select */}
+      <select
+        value={filterCat}
+        onChange={(e) => setFilterCat(e.target.value)}
+        className="input h-9 text-[12px] w-auto pr-8 cursor-pointer"
+      >
+        <option value="all">All Categories</option>
+        {ALL_CATEGORIES.map((c) => (
+          <option key={c} value={c}>{c}</option>
+        ))}
+      </select>
+
+      {/* Result count + clear */}
+      <div className="flex items-center gap-3 ml-auto">
+        <span className="text-[12px] text-slate-400 dark:text-slate-500">
+          {filteredTransactions.length} result{filteredTransactions.length !== 1 ? 's' : ''}
+        </span>
+        {hasActiveFilters && (
+          <button
+            onClick={resetFilters}
+            className="text-[12px] text-brand-500 hover:text-brand-600 font-medium transition-colors"
+          >
+            Clear filters
+          </button>
+        )}
+      </div>
     </div>
   )
 }
-
-export default FilterBar
