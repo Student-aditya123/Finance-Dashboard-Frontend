@@ -128,3 +128,5 @@ npm install
 4️⃣ Run development server
 npm run dev
 
+## Author
+# Aditya Singh
