@@ -1,6 +1,6 @@
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts'
 import { formatCurrency } from '@/utils/formatters'
-import { ProgressBar } from '@/components/ui'
+import { ProgressBar } from '@/components/ui/Index'
 
 function CustomTooltip({ active, payload }) {
   if (!active || !payload?.length) return null

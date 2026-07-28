@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { ProgressBar } from '@/components/ui'
+import { ProgressBar } from '@/components/ui/Index'
 
 export default function InsightCard({
   icon,

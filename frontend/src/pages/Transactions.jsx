@@ -1,4 +1,4 @@
-import { Card, CardHeader } from '@/components/ui'
+import { Card, CardHeader } from '@/components/ui/Index'
 import FilterBar from '@/components/transactions/FilterBar'
 import TransactionTable from '@/components/transactions/TransactionTable'
 import { useTransactions } from '@/hooks'

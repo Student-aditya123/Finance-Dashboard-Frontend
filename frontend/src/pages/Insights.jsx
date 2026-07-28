@@ -1,6 +1,6 @@
 import { useTransactions } from '@/hooks'
 import { buildInsights, formatCurrency } from '@/utils/formatters'
-import { Card, CardHeader } from '@/components/ui'
+import { Card, CardHeader } from '@/components/ui/Index'
 import InsightCard from '@/components/insights/InsightCard'
 import SpendingBreakdown from '@/components/insights/SpendingBreakdown'
 

@@ -6,4 +6,18 @@ export default defineConfig({
   resolve: {
     alias: { '@': '/src' },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('recharts')) {
+              return 'recharts';
+            }
+            return 'vendor';
+          }
+        },
+      },
+    },
+  },
 })

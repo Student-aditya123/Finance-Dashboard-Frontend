@@ -4,7 +4,7 @@ import toast from 'react-hot-toast'
 import { useTransactions, useRole } from '@/hooks'
 import { formatDate, formatCurrency } from '@/utils/formatters'
 import { CATEGORIES } from '@/utils/seedData'
-import { Badge, CategoryChip, EmptyState } from '@/components/ui'
+import { Badge, CategoryChip, EmptyState } from '@/components/ui/Index'
 import TransactionModal from './TransactionModal'
 
 const COLS = [
